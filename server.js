@@ -20,6 +20,13 @@ app.set(
 )
 app.set('view engine', 'ejs')
 // middleware
+app.use(
+  express.static(
+    path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
+  )
+)
+app.use(methodOverride('_method'))
+
 app.use(function(req, res, next){
   console.log('HELLOOOOOOO')
   req.time = new Date().toLocaleTimeString()
